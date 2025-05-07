@@ -87,7 +87,7 @@ Host` by running the ``*.sh`` installation script.
 You can download a tarball installer, which includes the pre-built
 toolchain, the ``runqemu`` script, the internal build system,
 ``devtool``, and support files from the appropriate
-:yocto_dl:`toolchain </releases/yocto/yocto-&DISTRO;/toolchain/>` directory within the Index of
+:yocto_dl:`toolchain </releases/yocto/&DISTRO_REL_LATEST_TAG;/toolchain/>` directory within the Index of
 Releases. Toolchains are available for several 32-bit and 64-bit
 architectures with the ``x86_64`` directories, respectively. The
 toolchains the Yocto Project provides are based off the
@@ -729,7 +729,8 @@ the two modes:
       IMAGE_INSTALL:append = " my-recipe"
 
    Assuming the BitBake environment is set up correctly and a workspace has
-   been created for the recipe using ``devtool modify my-recipe``, the
+   been created for the recipe using ``devtool modify my-recipe`` or probably
+   even better by using ``devtool modify my-recipe --debug-build``, the
    following command can create the SDK and the configuration for VSCode in
    the recipe workspace::
 
@@ -880,8 +881,8 @@ the two modes:
    .. code-block:: sh
 
       # Create the SDK
-      devtool modify cmake-example
-      devtool ide-sdk cmake-example core-image-minimal -c --debug-build-config --ide=none
+      devtool modify cmake-example --debug-build
+      devtool ide-sdk cmake-example core-image-minimal -c --ide=none
 
       # Install the firmware on a target device or start QEMU
       runqemu

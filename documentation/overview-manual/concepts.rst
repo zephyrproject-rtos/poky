@@ -736,9 +736,6 @@ following list describe the :term:`Build Directory`'s hierarchy:
    -  :term:`PV`: The version of the
       recipe used to build the package.
 
-   -  :term:`PR`: The revision of the
-      recipe used to build the package.
-
 -  :term:`S`: Contains the unpacked source
    files for a given recipe.
 
@@ -2204,7 +2201,7 @@ require root privileges, the fact that some earlier steps ran in a fake
 root environment does not cause problems.
 
 The capability to run tasks in a fake root environment is known as
-"`fakeroot <http://man.he.net/man1/fakeroot>`__", which is derived from
+":manpage:`fakeroot <fakeroot(1)>`", which is derived from
 the BitBake keyword/variable flag that requests a fake root environment
 for a task.
 
