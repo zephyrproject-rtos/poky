@@ -7385,17 +7385,12 @@ system and gives an overview of their function and contents.
          prefer to have a read-only root filesystem and prefer to keep
          writeable data in one place.
 
-      You can override the default by setting the variable in any layer or
-      in the ``local.conf`` file. Because the default is set using a "weak"
-      assignment (i.e. "??="), you can use either of the following forms to
-      define your override::
+      When setting ``INIT_MANAGER = systemd``, the default will be set to::
 
-         ROOT_HOME = "/root"
          ROOT_HOME ?= "/root"
 
-      These
-      override examples use ``/root``, which is probably the most commonly
-      used override.
+      You can also override the default by setting the variable in your distro
+      configuration or in the ``local.conf`` file.
 
    :term:`ROOTFS`
       Indicates a filesystem image to include as the root filesystem.
@@ -8388,7 +8383,7 @@ system and gives an overview of their function and contents.
       class.
 
    :term:`SPL_SIGN_KEYNAME`
-      The name of keys used by the :ref:`ref-classes-kernel-fitimage` class
+      The name of keys used by the :ref:`ref-classes-uboot-sign` class
       for signing U-Boot FIT image stored in the :term:`SPL_SIGN_KEYDIR`
       directory. If we have for example a ``dev.key`` key and a ``dev.crt``
       certificate stored in the :term:`SPL_SIGN_KEYDIR` directory, you will
@@ -10373,6 +10368,20 @@ system and gives an overview of their function and contents.
    :term:`WATCHDOG_TIMEOUT`
       Specifies the timeout in seconds used by the ``watchdog-config`` recipe
       and also by ``systemd`` during reboot. The default is 60 seconds.
+
+   :term:`WIC_CREATE_EXTRA_ARGS`
+      If the :term:`IMAGE_FSTYPES` variable contains "wic", the build
+      will generate a
+      :ref:`Wic image <dev-manual/wic:creating partitioned images using wic>`
+      automatically when BitBake builds an image recipe. As part of
+      this process BitBake will invoke the "`wic create`" command. The
+      :term:`WIC_CREATE_EXTRA_ARGS` variable is placed at the end of this
+      command which allows the user to supply additional arguments.
+
+      One such useful purpose for this mechanism is to add the ``-D`` (or
+      ``--debug``) argument to the "`wic create`" command. This increases the
+      amount of debugging information written out to the Wic log during the
+      Wic creation process.
 
    :term:`WIRELESS_DAEMON`
       For ``connman`` and ``packagegroup-base``, specifies the wireless
