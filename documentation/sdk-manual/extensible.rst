@@ -669,7 +669,7 @@ SDK or eSDK:
    ``devtool build``.
    It also allows to benefit from the very good integration that IDEs like
    VSCode offer for tools like CMake or GDB.
-   
+
    However, supporting many programming languages and multiple
    IDEs is quite an elaborate and constantly evolving thing. Support for IDEs
    is therefore implemented as plugins. Plugins can also be provided by
@@ -802,7 +802,7 @@ the two modes:
 
       This instance of VSCode uses plugins that are useful for the development
       of the application. ``devtool ide-sdk`` generates the necessary
-      ``extensions.json``, ``settings.json``, ``tasks.json``and ``launch.json``
+      ``extensions.json``, ``settings.json``, ``tasks.json`` and ``launch.json``
       configuration files for all the involved plugins.
 
       When the source code folder present in the workspace folder is opened in
