@@ -397,10 +397,10 @@ class Git(FetchMethod):
         elif os.path.exists(ud.fullmirror) and self.need_update(ud, d):
             if not os.path.exists(ud.clonedir):
                 bb.utils.mkdirhier(ud.clonedir)
-                runfetchcmd("tar -xzf %s" % ud.fullmirror, d, workdir=ud.clonedir)
+                runfetchcmd("tar --no-same-owner -xzf %s" % ud.fullmirror, d, workdir=ud.clonedir)
             else:
                 with tempfile.TemporaryDirectory(dir=d.getVar('DL_DIR')) as tmpdir:
-                    runfetchcmd("tar -xzf %s" % ud.fullmirror, d, workdir=tmpdir)
+                    runfetchcmd("tar --no-same-owner -xzf %s" % ud.fullmirror, d, workdir=tmpdir)
                     output = runfetchcmd("%s remote" % ud.basecmd, d, quiet=True, workdir=ud.clonedir)
                     if 'mirror' in output:
                         runfetchcmd("%s remote rm mirror" % ud.basecmd, d, workdir=ud.clonedir)
@@ -654,7 +654,7 @@ class Git(FetchMethod):
             if ud.shallow:
                 if os.path.exists(ud.fullshallow):
                     bb.utils.mkdirhier(destdir)
-                    runfetchcmd("tar -xzf %s" % ud.fullshallow, d, workdir=destdir)
+                    runfetchcmd("tar --no-same-owner -xzf %s" % ud.fullshallow, d, workdir=destdir)
                     source_found = True
                 else:
                     source_error.append("shallow clone not available: " + ud.fullshallow)
